@@ -140,3 +140,37 @@
             <h2>Smash Karts</h2>
             <button onclick="playGame('https://timcheeselmao.github.io/assets/smashkarts.html')">Play</button>
         </div>
+     
+        <div class="iframe-container" id="iframeContainer">
+        <button class="close-button" onclick="closeGame()">Close</button>
+        <iframe id="gameIframe" src=""></iframe>
+    </div>
+
+    
+    <script>
+        document.getElementById('searchBar').addEventListener('input', function () {
+            const searchQuery = this.value.toLowerCase();
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                const title = card.getAttribute('data-title').toLowerCase();
+                if (title.includes(searchQuery)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        function playGame(url) {
+            document.getElementById('gameIframe').src = url;
+            document.getElementById('iframeContainer').style.display = 'flex';
+        }
+
+        function closeGame() {
+            document.getElementById('gameIframe').src = '';
+            document.getElementById('iframeContainer').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
